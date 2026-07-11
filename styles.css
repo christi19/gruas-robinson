@@ -188,25 +188,24 @@ h3 {
   gap: 0.8rem;
 }
 
-.brand-mark {
+.brand-logo {
   display: grid;
-  width: 44px;
-  height: 44px;
+  width: 58px;
+  height: 58px;
   place-items: center;
-  border: 1px solid rgba(216, 222, 231, 0.58);
-  border-radius: 12px;
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.15), rgba(170, 180, 195, 0.04));
-  color: var(--silver-200);
-  box-shadow: inset 0 1px rgba(255, 255, 255, 0.1);
+  flex: 0 0 auto;
 }
 
-.brand-mark svg {
-  width: 29px;
-  fill: none;
-  stroke: currentColor;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 2;
+.brand-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 12px rgba(2, 13, 29, 0.28));
+}
+
+.brand-logo--footer {
+  width: 78px;
+  height: 78px;
 }
 
 .brand-copy {
@@ -856,6 +855,150 @@ h3 {
 .service-cta strong {
   color: var(--navy-900);
   font-size: 1.1rem;
+}
+
+.transfers {
+  position: relative;
+  overflow: hidden;
+  background: var(--white);
+}
+
+.transfers::before {
+  position: absolute;
+  top: -22rem;
+  right: -18rem;
+  width: 44rem;
+  height: 44rem;
+  border: 1px solid rgba(170, 180, 195, 0.2);
+  border-radius: 50%;
+  content: "";
+  pointer-events: none;
+}
+
+.transfers-heading {
+  position: relative;
+  z-index: 2;
+}
+
+.transfers-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1rem;
+}
+
+.transfer-card {
+  position: relative;
+  min-height: 450px;
+  overflow: hidden;
+  margin: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--navy-900);
+  box-shadow: var(--shadow-sm);
+  isolation: isolate;
+}
+
+.transfer-card::after {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 38%, rgba(4, 16, 34, 0.92) 100%);
+  content: "";
+  pointer-events: none;
+}
+
+.transfer-card--bus {
+  grid-column: span 5;
+}
+
+.transfer-card--tractor {
+  grid-column: span 7;
+}
+
+.transfer-card--machine {
+  min-height: 390px;
+  grid-column: 1 / -1;
+}
+
+.transfer-card img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 500ms var(--ease), filter 300ms ease;
+}
+
+.transfer-card--bus img {
+  object-position: 50% 50%;
+}
+
+.transfer-card--tractor img {
+  object-position: 52% 50%;
+}
+
+.transfer-card--machine img {
+  object-position: 50% 53%;
+}
+
+.transfer-card:hover img {
+  transform: scale(1.025);
+  filter: saturate(1.05) contrast(1.02);
+}
+
+.transfer-card figcaption {
+  position: absolute;
+  z-index: 2;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: clamp(1.5rem, 3vw, 2.35rem);
+  color: var(--white);
+}
+
+.transfer-card figcaption > span {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #8fbdff;
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.transfer-card h3 {
+  max-width: 520px;
+  margin-bottom: 0.45rem;
+  font-size: clamp(1.55rem, 3vw, 2.35rem);
+}
+
+.transfer-card p {
+  max-width: 520px;
+  margin-bottom: 0;
+  color: var(--silver-200);
+  font-size: 0.9rem;
+}
+
+.transfers-action {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1rem;
+  padding: 1.35rem 1.6rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  gap: 2rem;
+}
+
+.transfers-action p {
+  margin: 0;
+  color: var(--navy-900);
+  font-weight: 800;
 }
 
 .coverage {
@@ -1670,6 +1813,20 @@ h3 {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .transfers-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .transfer-card--bus,
+  .transfer-card--tractor {
+    min-height: 410px;
+    grid-column: span 1;
+  }
+
+  .transfer-card--machine {
+    grid-column: 1 / -1;
+  }
+
   .service-card,
   .service-card--featured,
   .service-card--wide,
@@ -1847,6 +2004,26 @@ h3 {
     flex-direction: column;
   }
 
+  .transfers-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .transfer-card--bus,
+  .transfer-card--tractor,
+  .transfer-card--machine {
+    min-height: 360px;
+    grid-column: 1;
+  }
+
+  .transfers-action {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .transfers-action .button {
+    width: 100%;
+  }
+
   .route-panel {
     min-height: 390px;
   }
@@ -1969,9 +2146,9 @@ h3 {
     --gutter: 1rem;
   }
 
-  .brand-mark {
-    width: 40px;
-    height: 40px;
+  .brand-logo {
+    width: 48px;
+    height: 48px;
   }
 
   .brand-copy small {
