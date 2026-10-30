@@ -2193,3 +2193,32 @@ h3 {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Preserve the filled WhatsApp mark in every button. */
+.whatsapp-icon, .button svg.whatsapp-icon, .floating-whatsapp svg.whatsapp-icon, .mobile-action-bar svg.whatsapp-icon {
+  width: 20px; height: 20px; flex: 0 0 20px; fill: currentColor; stroke: none;
+}
+.floating-whatsapp { padding: 0.75rem 1.15rem; gap: 0.6rem; box-shadow: 0 8px 24px rgba(4, 16, 34, 0.22); }
+
+/* Coverage graphic: a geographic outline with approximate service locations. */
+.coverage-card { display: flex; flex-direction: column; justify-content: space-between; padding: clamp(1.5rem, 4vw, 2.5rem); background: linear-gradient(145deg, #193451, #0c203a); }
+.coverage-card__heading { display: grid; gap: .35rem; }
+.coverage-card__heading span { color: #a7c9f3; font-size: .75rem; font-weight: 800; letter-spacing: .11em; text-transform: uppercase; }
+.coverage-card__heading strong { color: white; font-size: 1.3rem; }
+.coverage-card__map { display: block; width: min(100%, 390px); height: 240px; margin: 0 auto; overflow: visible; }
+.coverage-card__map path { fill: rgba(112, 170, 228, .18); stroke: #8fbce7; stroke-width: 1.7; stroke-linejoin: round; }
+.coverage-card__map circle { fill: #fff; stroke: #2787f9; stroke-width: 4; }
+.coverage-card__places { display: flex; flex-wrap: wrap; gap: .5rem; }
+.coverage-card__places span { padding: .45rem .75rem; border: 1px solid rgba(190, 216, 244, .3); border-radius: 999px; color: #f4f8ff; font-size: .85rem; font-weight: 700; }
+.coverage-card__note { margin: 1rem 0 0; color: #bfcee0; font-size: .9rem; }
+.coverage-card__note span { color: #75b6ff; }
+@media (max-width: 700px) { .coverage-card__map { height: 190px; } }
+
+/* A calmer mobile introduction keeps the main action visible sooner. */
+.hero-visual { transform: none; }
+@media (max-width: 700px) {
+  h1 { font-size: clamp(2.15rem, 9vw, 3rem); }
+  .hero-layout { padding-top: 2.5rem; }
+  .hero-actions .button--secondary { display: none; }
+  .hero-support { margin-bottom: 1.4rem; }
+}
